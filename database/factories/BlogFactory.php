@@ -23,13 +23,13 @@ class BlogFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->text,
+            'title' => $this->faker->sentence(2),
             'url' => $this->faker->url,
-            'slug' => Str::slug($this->faker->text),
-            'excerpt' => $this->faker->text,
+            'excerpt' => $this->faker->sentence(10),
             'content' => [
-                $this->faker->text
-            ]
+                'header' => 'https://picsum.photos/800/400',
+                'content' => $this->faker->paragraph(50),
+            ],
         ];
     }
 }

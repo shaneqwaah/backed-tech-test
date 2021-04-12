@@ -3,17 +3,17 @@
 namespace Database\Factories;
 
 use App\Models\Blog;
-use App\Models\Comment;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
-class CommentFactory extends Factory
+class BlogFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Comment::class;
+    protected $model = Blog::class;
 
     /**
      * Define the model's default state.
@@ -22,14 +22,14 @@ class CommentFactory extends Factory
      */
     public function definition()
     {
-        $blogs = Blog::all()->pluck('id')->toArray();
-
         return [
-            'title' => $this->faker->title,
-            'name' => $this->faker->name,
-            'email' => $this->faker->safeEmail,
-            'comment' => $this->faker->text,
-            'blog_id' => $this->faker->randomElement($blogs)
+            'title' => $this->faker->sentence(2),
+            'url' => $this->faker->url,
+            'excerpt' => $this->faker->sentence(10),
+            'content' => [
+                'header' => 'https://picsum.photos/800/400',
+                'content' => $this->faker->paragraph(50),
+            ],
         ];
     }
 }
