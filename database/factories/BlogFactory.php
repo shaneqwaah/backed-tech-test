@@ -23,12 +23,12 @@ class BlogFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->title,
+            'title' => $this->faker->text,
             'url' => $this->faker->url,
-            'slug' => Str::slug($this->faker->title),
-            'excerpt' => 'This is an excerpt',
+            'slug' => Str::slug($this->faker->text),
+            'excerpt' => $this->faker->text,
             'content' => [
-                'key' => 'value'
+                $this->faker->text
             ]
         ];
     }

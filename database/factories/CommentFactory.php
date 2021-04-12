@@ -28,8 +28,8 @@ class CommentFactory extends Factory
             'title' => $this->faker->title,
             'name' => $this->faker->name,
             'email' => $this->faker->safeEmail,
-            'comment' => 'TEST',
-            'blog_id' => (int) $this->faker->randomElement($blogs)
+            'comment' => $this->faker->text,
+            'blog_id' => $this->faker->randomElement($blogs)
         ];
     }
 }
