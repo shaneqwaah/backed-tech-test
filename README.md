@@ -24,13 +24,14 @@ php artisan migrate --seed
 
 For this tech test we have set up a basic Laravel app, for you to work off, with blogs and comments tables already set up.
 
-To complete the test we would like you to add 4 endpoints to the `api.php` routes file, which will allow a consumer to grab the blogs with comments, add a new comment to a blog, edit a comment, and delete a comment.
+To complete the test we would like you to add 5 endpoints to the `api.php` routes file, which will allow a consumer to grab the blogs, get single blog with comments, add a new comment to a blog, edit a comment, and delete a comment.
 
 It should only respond with json, you don't need to complete any front end forms/layouts.
 
 The endpoints should be:
 
 -   GET blogs
+-   GET single blog with comments
 -   POST comment to a blog
 -   PUT comment
 -   DELETE comment
