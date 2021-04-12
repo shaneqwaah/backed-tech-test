@@ -10,13 +10,15 @@ At Pixel we use Laravel as a headless API, and have a separated FE that consumes
 
 ### Setup
 
-`cp .env.example .env`
+```
+cp .env.example .env
 
-`composer install`
+composer install
 
-`php artisan key:generate`
+php artisan key:generate
 
-`php artisan migrate --seed`
+php artisan migrate --seed
+```
 
 ### Test
 
