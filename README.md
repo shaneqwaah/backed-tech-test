@@ -38,7 +38,7 @@ The endpoints should be:
 
 All of the routes should be public, and not behind any auth;
 
-Please fork this repo and submit a pull request with your work when it has been completed. Please commit along the way so we can see a history of you working through the tasks.
+Please fork this repo and submit the link to your public repository from your account. Please commit along the way so we can see a history of you working through the tasks.
 
 ---
 
