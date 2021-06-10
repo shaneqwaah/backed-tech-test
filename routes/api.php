@@ -16,5 +16,7 @@ use Illuminate\Support\Facades\Route;
 | Please make BLOG & COMMENT CRUD ROUTES
 */
 
-
 Route::get('/blogs', [BlogController::class, 'index']);
+
+Route::get('/blog/{id}', [BlogController::class, 'blogWithComments']);
+
