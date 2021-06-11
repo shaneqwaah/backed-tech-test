@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,4 @@ Route::get('/blogs', [BlogController::class, 'index']);
 
 Route::get('/blog/{id}', [BlogController::class, 'blogWithComments']);
 
+Route::post('/add-comment', [CommentController::class, 'addCommentToBlog']);

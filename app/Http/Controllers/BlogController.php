@@ -19,10 +19,9 @@ class BlogController extends ResponseController
     {
         $blogWithComments = Blog::where('id',$id);
 
-
         if ($blogWithComments->first()) {
             $getBlogsAndComments = $blogWithComments->with(['comments'])->get();
-            return $this->sendResponse($getBlogsAndComments,'Successfully retrieved all blogs');
+            return $this->sendResponse($getBlogsAndComments,'Successfully retrieved  blog '.$id. ' and all comments associated with it');
         } else {
             return $this->sendError('No blog with id: '.$id.' found');
         }
