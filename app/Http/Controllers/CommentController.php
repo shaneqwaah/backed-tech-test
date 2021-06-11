@@ -44,6 +44,7 @@ class CommentController extends ResponseController
         $validator = Validator::make($r->all(), [
             'blog_id' => 'required|integer',
             'comment_id' => 'required|integer',
+            'email' => 'required|string|email|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -71,6 +72,22 @@ class CommentController extends ResponseController
 
         } else {
             return $this->sendError('Comment with id: ' . $r->comment_id . ' does not exist');
+
+        }
+
+    }
+
+    public function deleteComment(Request $r, $comment_id)
+    {
+        $comment = Comment::where('id', $comment_id);
+        if ($comment->first()) {
+            DB::transaction(function () use ($comment, $r) {
+                $comment->delete();
+            });
+            return $this->sendResponse('', 'Comment has been successfully deleted');
+
+        } else {
+            return $this->sendError('Comment with id: ' . $comment_id . ' does not exist');
 
         }
 
