@@ -38,4 +38,42 @@ class CommentController extends ResponseController
 
     }
 
+    public function editComment(Request $r)
+    {
+
+        $validator = Validator::make($r->all(), [
+            'blog_id' => 'required|integer',
+            'comment_id' => 'required|integer',
+        ]);
+
+        if ($validator->fails()) {
+            return $this->sendError('Validation Error.', $validator->errors());
+        }
+
+        $comment = Comment::where('id', $r->comment_id);
+        if ($comment->first()) {
+            if (Blog::where('id', $r->blog_id)->first()) {
+                DB::transaction(function () use ($comment, $r) {
+                    $comment->update([
+                        'title' => $r->title ? $r->title : $comment->first()->title,
+                        'name' => $r->name ? $r->name : $comment->first()->name,
+                        'email' => $r->email ? $r->email : $comment->first()->email,
+                        'comment' => $r->comment ? $r->comment : $comment->first()->comment,
+                        'blog_id' => $r->blog_id ? $r->blog_id : $comment->first()->blog_id,
+                    ]);
+                });
+                return $this->sendResponse($comment->first(), 'Comment has been edited successfullty');
+
+            } else {
+                return $this->sendError('Blog with id: ' . $r->blog_id . ' does not exist');
+
+            }
+
+        } else {
+            return $this->sendError('Comment with id: ' . $r->comment_id . ' does not exist');
+
+        }
+
+    }
+
 }
